@@ -5,6 +5,7 @@ class CreateAssets < ActiveRecord::Migration
       t.string :type
       t.string :author
       t.text :body
+      t.references :collection
       t.attachment :assets, :cover
 
       t.timestamps
