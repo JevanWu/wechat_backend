@@ -4,6 +4,7 @@ HualiWechat::Application.routes.draw do
 
   root 'replies#index'
   resources :assets
+  resources :image_texts
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
