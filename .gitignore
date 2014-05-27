@@ -16,3 +16,7 @@
 /tmp
 
 .keep
+
+/public/system/*
+
+/test/*
