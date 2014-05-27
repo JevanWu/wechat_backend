@@ -1,0 +1,11 @@
+.row
+  - @image_texts.each do |image_text|
+    br
+    .col-md-4
+      .thumbnail
+        = image_tag image_text.cover.url
+        .caption
+          h1 = image_text.title
+          p = image_text.author
+          p = image_text.body
+
