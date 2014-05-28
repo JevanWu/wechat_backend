@@ -7,6 +7,7 @@ class CreateAssets < ActiveRecord::Migration
       t.text :body
       t.references :image_text_collection
       t.attachment :assets, :cover
+      t.attachment :assets, :image
 
       t.timestamps
     end
