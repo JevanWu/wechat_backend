@@ -1,0 +1,2 @@
+module ImageTextsHelper
+end

@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140527101218) do
+ActiveRecord::Schema.define(version: 20140528023738) do
 
   create_table "assets", force: true do |t|
     t.string   "title"
     t.string   "type"
     t.string   "author"
     t.text     "body"
-    t.integer  "collection_id"
+    t.integer  "image_text_collection_id"
     t.string   "assets_file_name"
     t.string   "assets_content_type"
     t.integer  "assets_file_size"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20140527101218) do
     t.datetime "updated_at"
   end
 
-  create_table "collections", force: true do |t|
+  create_table "image_text_collections", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
