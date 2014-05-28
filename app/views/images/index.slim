@@ -20,4 +20,10 @@
         li
           = link_to "Multiple Assets", "#"
     .main-content
-      = render "image_text" 
+      .row
+        - @image_texts.each do |image_text|
+          br
+          .col-md-4
+            .thumbnail
+              = image_tag image_text.cover.url
+
