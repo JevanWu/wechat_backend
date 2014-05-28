@@ -12,10 +12,11 @@
   .col-md-9
     = link_to " New ", new_image_path, class: "btn btn-success"
     .main-content
+      br
       .row
         - @images.each do |image|
-          br
           .col-md-4
             .thumbnail
               = image_tag image.image.url
-
+              .captain 
+                p.text-center = image.image_file_name
