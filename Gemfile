@@ -36,6 +36,11 @@ gem 'paperclip'
 #simple_form for active record
 gem 'simple_form'
 
+gem 'font-awesome-sass'
+
+#summernote
+gem 'summernote-rails'
+
 group :development do
   gem 'pry'
 end
