@@ -13,6 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require bootstrap.min
-//= require summernote.min
+//= require bootstrap
+//= require summernote
 //= require_tree .
