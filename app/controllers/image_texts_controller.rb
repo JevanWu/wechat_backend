@@ -12,6 +12,19 @@ class ImageTextsController < ApplicationController
     # end
   end
 
+  def edit
+    @image_text = ImageText.find(params[:id])
+  end
+
+  def update
+    @image_text = ImageText.find(params[:id])
+    if @image_text.update(image_text_params)
+      redirect_to image_text_path(@image_text)
+    else
+      render 'edit'
+    end
+  end
+
   def create
     @image_text = ImageText.create(image_text_params)
     redirect_to image_text_path(@image_text)

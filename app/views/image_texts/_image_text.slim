@@ -7,5 +7,6 @@
         .caption
           h1 = image_text.title
           p = image_text.author
-          p = image_text.body
+          p = image_text.body.html_safe
+          p = link_to "edit", edit_image_text_path(image_text)
 
