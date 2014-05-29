@@ -34,7 +34,7 @@ gem 'slim'
 gem 'paperclip'
 
 #simple_form for active record
-gem 'simple_form'
+gem 'simple_form', '~> 3.1.0.rc1'
 
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
