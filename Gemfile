@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://ruby.taobao.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.5'
@@ -36,6 +36,7 @@ gem 'paperclip'
 #simple_form for active record
 gem 'simple_form'
 
+gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 
 #summernote
