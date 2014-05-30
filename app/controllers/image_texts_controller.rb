@@ -2,6 +2,7 @@ class ImageTextsController < ApplicationController
   
   def index 
     @image_texts = ImageText.all
+    @image_text_collections = ImageTextCollection.all
   end
 
   def new

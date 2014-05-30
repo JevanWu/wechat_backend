@@ -1,0 +1,47 @@
+.container
+  .col-md-3
+    ul.nav.nav-pills.nav-stacked
+      li
+        = link_to "Image&Text", image_texts_path
+      li
+        = link_to "Image", images_path
+      li
+        = link_to "Audio", "#"
+      li
+        = link_to "Video", "#"
+  .col-md-9
+    .main-content
+      br
+      .thumbnail
+        = image_tag "default_image.gif", data: {toggle: "modal", target: "#myModal"}
+
+      = simple_form_for @image_text_collection, url: image_text_collections_path do |f|
+        .modal.fade#myModal(tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true")
+          .modal-dialog
+            .modal-content
+              .modal-header
+                button.close(type="button" data-dismiss="modal" aria-hidden="true")
+                  | &times;
+                h4.modal-title#myModalLabel
+                  = "Modal title"
+              .modal-body
+                - if @image_text_collection.new_record?
+                  = f.simple_fields_for :image_texts do |sf|
+                    = sf.input :title
+                    = sf.input :author
+                    = sf.input :cover, as: :file
+                    = sf.input :body, input_html: { class: "summernote" }
+              .modal-footer
+                button.btn.btn-primary(type="button" data-dismiss="modal")
+                  | Save
+        = f.button :submit, value: "submit", class: "btn btn-default" 
+
+              /*- else*/
+              /*  = simple_form_for @image_text, url: image_text_collections_path do |f|*/
+              /*    = f.input :title*/
+              /*    = f.input :author*/
+              /*    = f.input :cover, as: :file*/
+              /*    = f.input :body, input_html: { class: "summernote" }*/
+              /*    = f.input :image_text_collection_id, value: @collection, as: :hidden*/
+              /*    = f.button :submit, value: "submit", class: "btn btn-default" */
+
