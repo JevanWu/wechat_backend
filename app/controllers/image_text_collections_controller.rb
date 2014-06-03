@@ -12,7 +12,7 @@ class ImageTextCollectionsController < ApplicationController
     #   @image_text = @image_text_collection.image_texts.build
     # else
     @image_text_collection = ImageTextCollection.new
-    @image_text = @image_text_collection.image_texts.build
+    3.times { @image_text = @image_text_collection.image_texts.build }
     # end
   end
 
