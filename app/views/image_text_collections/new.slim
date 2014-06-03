@@ -15,6 +15,7 @@
       - @image_text_collection.image_texts.each_with_index do |image_text, index|
         .thumbnail.fields
           = image_tag "default_image.gif", data: {toggle: "modal", target: "#myModal#{index}"}
+          = link_to_function "Remove", "remove_fields(this, '#myModal#{index}')"
       = simple_form_for @image_text_collection, url: image_text_collections_path do |f|
         - if @image_text_collection.new_record?
           - @image_text_collection.image_texts.each_with_index do |image_text, index|
@@ -32,6 +33,7 @@
                       = sf.input :author
                       = sf.input :cover, as: :file
                       = sf.input :body, input_html: { class: "summernote" }
+                      = sf.input :_destroy, as: :hidden
                     .modal-footer
                       button.btn.btn-primary(type="button" data-dismiss="modal")
                         | Save
