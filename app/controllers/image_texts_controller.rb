@@ -35,6 +35,12 @@ class ImageTextsController < ApplicationController
     @image_text = ImageText.find(params[:id])
   end
 
+  def destroy
+    @image_text = ImageText.find(params[:id])
+    @image_text.destroy
+    redirect_to image_texts_path
+  end
+
   private
 
   def image_text_params
