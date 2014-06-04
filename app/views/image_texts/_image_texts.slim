@@ -8,9 +8,3 @@ br
           = image_tag image_text.cover.url
           .caption
             p = link_to "edit", edit_image_text_path(image_text)
-.row
-  - @image_text_collections.each do |collection|
-    - collection.image_texts.each do |image_text|
-      .col-md-4
-        .thumbnail
-            = image_tag image_text.cover.url

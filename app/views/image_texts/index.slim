@@ -20,4 +20,12 @@
         li
           = link_to "Multiple Assets", new_image_text_collection_path
     .main-content
-      = render "image_text" 
+      .image-texts
+        h3 
+          | Single Image Text:
+        = render "image_texts" 
+      br
+      .image-text-collections
+        h3 
+          | Multiple Image Text:
+        = render "image_text_collections"

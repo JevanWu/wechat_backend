@@ -1,0 +1,7 @@
+br
+.row
+  - @image_text_collections.each do |collection|
+    .col-md-4
+      .thumbnail
+        - collection.image_texts.each do |image_text|
+          = image_tag image_text.cover.url
