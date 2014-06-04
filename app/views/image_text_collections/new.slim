@@ -1,14 +1,5 @@
 .container
-  .col-md-3
-    ul.nav.nav-pills.nav-stacked
-      li
-        = link_to "Image&Text", image_texts_path
-      li
-        = link_to "Image", images_path
-      li
-        = link_to "Audio", "#"
-      li
-        = link_to "Video", "#"
+  = render "shared/assets_menu"
   .col-md-9
     .main-content
       = render "new_form"
