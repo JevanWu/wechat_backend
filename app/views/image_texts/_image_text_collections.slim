@@ -5,3 +5,5 @@ br
       .thumbnail
         - collection.image_texts.each do |image_text|
           = image_tag image_text.cover.url
+        .caption
+          p = link_to "edit", edit_image_text_collection_path(collection)
