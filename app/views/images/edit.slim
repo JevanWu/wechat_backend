@@ -11,7 +11,4 @@
         = link_to "Video", "#"
   .col-md-9
     .main-content
-      br
-      = simple_form_for @image, url: image_path do |f| 
-        = f.input :image
-        = f.button :submit, value: "submit"
+      = render "form"
