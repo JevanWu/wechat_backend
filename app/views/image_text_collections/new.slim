@@ -19,32 +19,8 @@
       = simple_form_for @image_text_collection, url: image_text_collections_path do |f|
         - if @image_text_collection.new_record?
           - @image_text_collection.image_texts.each_with_index do |image_text, index|
-            = f.simple_fields_for :image_texts do |sf|
-              .modal.fade(id= "myModal#{index}"tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true")
-                .modal-dialog
-                  .modal-content
-                    .modal-header
-                      button.close(type="button" data-dismiss="modal" aria-hidden="true")
-                        | &times;
-                      h4.modal-title#myModalLabel
-                        = "Modal title"
-                    .modal-body
-                      = sf.input :title
-                      = sf.input :author
-                      = sf.input :cover, as: :file
-                      = sf.input :body, input_html: { class: "summernote" }
-                      = sf.input :_destroy, as: :hidden
-                    .modal-footer
-                      button.btn.btn-primary(type="button" data-dismiss="modal")
-                        | Save
+
+
+          = f.simple_fields_for :image_texts do |sf|
+            = render "image_text_field", f: sf, index: sf.options[:child_index] - 1
         = f.button :submit, value: "submit", class: "btn btn-default" 
-
-              /*- else*/
-              /*  = simple_form_for @image_text, url: image_text_collections_path do |f|*/
-              /*    = f.input :title*/
-              /*    = f.input :author*/
-              /*    = f.input :cover, as: :file*/
-              /*    = f.input :body, input_html: { class: "summernote" }*/
-              /*    = f.input :image_text_collection_id, value: @collection, as: :hidden*/
-              /*    = f.button :submit, value: "submit", class: "btn btn-default" */
-

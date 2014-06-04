@@ -1,0 +1,17 @@
+.modal.fade(id="myModal#{index}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true")
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close(type="button" data-dismiss="modal" aria-hidden="true")
+          | &times;
+        h4.modal-title#myModalLabel
+          = "Modal title"
+      .modal-body
+        = f.input :title
+        = f.input :author
+        = f.input :cover, as: :file
+        = f.input :body, input_html: { class: "summernote" }
+        = f.input :_destroy, as: :hidden
+      .modal-footer
+        button.btn.btn-primary(type="button" data-dismiss="modal")
+          | Save
