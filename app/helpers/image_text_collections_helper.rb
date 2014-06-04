@@ -5,7 +5,7 @@ module ImageTextCollectionsHelper
 
   def link_to_add_field(name, f)
     new_obj = f.object.class.reflect_on_association(:image_texts).klass.new
-    trigger = "<div class=\"thumbnail fields\"><img alt=\"Default image\" data-target=\"#myModalnew_trigger\" data-toggle=\"modal\" src=\"/assets/default_image.gif\"><a href=\"#\" onclick=\"remove_fields(this, &quot;#myModal0&quot;); return false;\">Remove</a></div>"
+    trigger = "<div class=\"thumbnail fields\"><img alt=\"Default image\" data-target=\"#myModalnew_trigger\" data-toggle=\"modal\" src=\"/assets/default_image.gif\"><a class=\"btn btn-default\" href=\"#\" onclick=\"remove_fields(this, &quot;#myModal0&quot;); return false;\">Remove</a></div>"
     field = f.simple_fields_for :image_texts, new_obj do |sf|
       render "image_text_field", f: sf, index: "new_field"
     end

@@ -11,12 +11,4 @@
         = link_to "Video", "#"
   .col-md-9
     .main-content
-      br
-      = simple_form_for @image_text_collection, url: image_text_collection_path do |f|
-        = f.simple_fields_for :image_texts do |sf|
-          = sf.input :title
-          = sf.input :author
-          = sf.input :cover, as: :file
-          = sf.input :body, input_html: { class: "summernote" }
-          = sf.input :_destroy, as: :hidden
-        = f.button :submit, value: "submit", class: "btn btn-default"
+      = render "form"
