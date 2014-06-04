@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require bootstrap
 //= require summernote
-//= require_tree .
+//= require image_texts
+//= require image_text_collections

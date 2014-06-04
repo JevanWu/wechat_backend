@@ -1,3 +1,4 @@
+- require 'pry'
 .container
   .col-md-3
     ul.nav.nav-pills.nav-stacked
@@ -11,16 +12,14 @@
         = link_to "Video", "#"
   .col-md-9
     .main-content
-      br
-      - @image_text_collection.image_texts.each_with_index do |image_text, index|
-        .thumbnail.fields
-          = image_tag "default_image.gif", data: {toggle: "modal", target: "#myModal#{index}"}
-          = link_to_function "Remove", "remove_fields(this, '#myModal#{index}')"
       = simple_form_for @image_text_collection, url: image_text_collections_path do |f|
-        - if @image_text_collection.new_record?
-          - @image_text_collection.image_texts.each_with_index do |image_text, index|
+        - @image_text_collection.image_texts.each_with_index do |image_text, index|
+          .thumbnail.fields
+            = image_tag "default_image.gif", data: {toggle: "modal", target: "#myModal#{index}"}
+            = link_to_remove_field "Remove", index 
 
+        = link_to_add_field "Add", f
 
-          = f.simple_fields_for :image_texts do |sf|
-            = render "image_text_field", f: sf, index: sf.options[:child_index] - 1
+        = f.simple_fields_for :image_texts do |sf|
+          = render "image_text_field", f: sf, index: sf.options[:child_index] - 1
         = f.button :submit, value: "submit", class: "btn btn-default" 
