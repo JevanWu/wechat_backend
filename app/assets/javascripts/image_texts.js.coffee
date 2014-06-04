@@ -6,10 +6,10 @@ loadSummernote = ->
 
   # to set summernote object
   # You should change '#post_content' to your textarea input id
-  if $('#image_text_body').length != 0
-    summerNote = $('#image_text_body')
-  else
-    summerNote = $('#image_text_collection_image_texts_attributes_0_body')
+  # if $('#image_text_body').length != 0
+    # summerNote = $('#image_text_body')
+  # else
+  summerNote = $(".summernote")
 
   # to call summernote editor
   summerNote.summernote
