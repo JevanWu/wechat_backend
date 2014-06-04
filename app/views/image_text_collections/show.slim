@@ -12,7 +12,6 @@
   .col-md-9
     .row
       .main-content
-        - @image_text_collection.image_texts.each do |image_text|
-          - unless image_text.new_record?
-            .thumbnail
-              = image_tag image_text.cover.url
+        .thumbnail
+          - @image_text_collection.image_texts.each do |image_text|
+            = image_tag image_text.cover.url
