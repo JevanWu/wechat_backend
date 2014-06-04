@@ -20,3 +20,7 @@
               = image_tag image.image.url
               .captain 
                 p.text-center = image.image_file_name
+                p
+                  = link_to "edit", edit_image_path(image)
+                  | &nbsp;
+                  = link_to "delete", image_path(image), method: :delete, data: {confirm: "are your sure?"}
