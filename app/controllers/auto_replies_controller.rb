@@ -1,0 +1,2 @@
+class AutoRepliesController < ApplicationController
+end
