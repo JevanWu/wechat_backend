@@ -21,7 +21,7 @@ class ImageTextCollectionsController < ApplicationController
 
   def update
     @image_text_collection = ImageTextCollection.find(params[:id])
-    if i = @image_text_collection.update(collection_params)
+    if @image_text_collection.update(collection_params)
       redirect_to image_text_collection_path(@image_text_collection)
     else
       render 'edit'
@@ -37,6 +37,12 @@ class ImageTextCollectionsController < ApplicationController
 
   def show
     @image_text_collection = ImageTextCollection.find(params[:id])
+  end
+
+  def destroy
+    @image_text_collection = ImageTextCollection.find(params[:id])
+    @image_text_collection.destroy
+    redirect_to image_texts_path
   end
 
   private
