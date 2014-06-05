@@ -36,11 +36,15 @@ gem 'paperclip'
 #simple_form for active record
 gem 'simple_form', '~> 3.1.0.rc1'
 
+#summernote dependencies
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 
 #summernote
 gem 'summernote-rails'
+
+#capistrano for deploying
+gem 'capistrano'
 
 group :development do
   gem 'pry'
