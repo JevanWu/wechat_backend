@@ -46,6 +46,9 @@ gem 'summernote-rails'
 #capistrano for deploying
 gem 'capistrano'
 
+#unicorn
+gem 'unicorn'
+
 group :development do
   gem 'pry'
 end
