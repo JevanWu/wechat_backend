@@ -36,6 +36,9 @@ gem 'paperclip'
 #simple_form for active record
 gem 'simple_form', '~> 3.1.0.rc1'
 
+#postgres
+gem 'pg'
+
 #summernote dependencies
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
