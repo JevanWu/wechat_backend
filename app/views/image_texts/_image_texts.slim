@@ -1,13 +1,14 @@
 br
 .row
-  - @image_texts.each do |image_text|
-    - unless image_text.image_text_collection_id
-      .col-md-4
-        .thumbnail
-          h3.text-center = image_text.title
-          = image_tag image_text.cover.url
-          .caption
-            p 
-              = link_to "edit", edit_image_text_path(image_text)
-              | &nbsp;
-              = link_to "delete", image_text_path(image_text), method: :delete, data: {confirm: "are you sure?"}
+  - if !@image_texts.nil?
+    - @image_texts.each do |image_text|
+      - unless image_text.image_text_collection_id
+        .col-md-4
+          .thumbnail
+            h3.text-center = image_text.title
+            = image_tag image_text.cover.url
+            .caption
+              p 
+                = link_to "edit", edit_image_text_path(image_text)
+                | &nbsp;
+                = link_to "delete", image_text_path(image_text), method: :delete, data: {confirm: "are you sure?"}
