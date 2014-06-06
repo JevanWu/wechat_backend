@@ -46,14 +46,17 @@ gem 'font-awesome-sass'
 #summernote
 gem 'summernote-rails'
 
-#capistrano for deploying
-gem 'capistrano'
-
-#unicorn
-gem 'unicorn'
-
 group :development do
   gem 'pry'
+  #capistrano for deploying
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rbenv'
+end
+
+group :production do
+  #unicorn
+  gem 'unicorn'
 end
 
 group :doc do
