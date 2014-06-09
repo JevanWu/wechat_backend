@@ -1,6 +1,7 @@
 require 'digest/sha1'
 class WechatController < ApplicationController
-  
+  skip_before_filter :verify_authenticity_token, :only => [:receiver]
+
   def receiver
     if params[:signature]
       process_get_request
