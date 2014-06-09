@@ -6,27 +6,31 @@ class WechatController < ApplicationController
     signature = params[:signature]
     timestamp = params[:timestamp]
     nonce = params[:nonce]
-    token = "hualirocks2014"
+    echostr = params[:echostr]
+    token = "EuK8378d11ckeRXam86T5Pt37z6W1F8b"
 
     if check_signature(signature, timestamp, nonce, token)
-      render text: nonce
+      render text: echostr
+    else
+      flash[:error] = "URL verification failed"
+      redirect_to root_path
     end
   end
 
   private
 
   def check_signature(signature, timestamp, nonce, token)
-    decrypted_token = decrypt(signature, timestamp, nonce)
+    decrypted_token = decrypt(token, timestamp, nonce)
 
-    if decrypted_token == token
+    if decrypted_token == signature
       return true
     else
       return false
     end
   end
 
-  def decrypt(signature, timestamp, nonce)
-    signature_array = [signature, timestamp, nonce]
+  def decrypt(token, timestamp, nonce)
+    signature_array = [token, timestamp, nonce]
     signature_array.sort
     signature_string = signature_array.join("")
     Digest::SHA1.hexdigest signature_string
