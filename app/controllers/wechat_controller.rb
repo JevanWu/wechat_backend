@@ -2,6 +2,16 @@ require 'digest/sha1'
 class WechatController < ApplicationController
   
   def receiver
+    if params[:signature]
+      process_get_request
+    else
+      process_post_request
+    end
+  end
+
+  private
+
+  def process_get_request
     signature = params[:signature]
     timestamp = params[:timestamp]
     nonce = params[:nonce]
@@ -16,7 +26,8 @@ class WechatController < ApplicationController
     end
   end
 
-  private
+  def process_post_request
+  end
 
   def check_signature(signature, timestamp, nonce, token)
     encrypted_token = encrypt(token, timestamp, nonce)

@@ -9,6 +9,7 @@ HualiWechat::Application.routes.draw do
   resources :images
 
   get 'wechat/receiver', to: 'wechat#receiver'
+  post 'wechat/receiver', to: 'wechat#receiver'
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
