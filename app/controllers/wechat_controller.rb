@@ -8,14 +8,14 @@ class WechatController < ApplicationController
     nonce = params[:nonce]
     token = "EuK8378d11ckeRXam86T5Pt37z6W1F8b"
 
-    if check_signature(signature, timestamp, nonce)
+    if check_signature(signature, timestamp, nonce, token)
       render text: nonce
     end
   end
 
   private
 
-  def check_signature(signature, timestamp, nonce)
+  def check_signature(signature, timestamp, nonce, token)
     decrypted_token = decrypt(signature, timestamp, nonce)
 
     if decrypted_token == token
