@@ -1,4 +1,5 @@
 require 'digest/sha1'
+require 'rexml/xpath'
 class WechatController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => [:receiver]
 
@@ -28,6 +29,8 @@ class WechatController < ApplicationController
   end
 
   def process_post_request
+    msg_type = REXML::XPath.first(request.body, "/MsgType").value
+    puts msg_type
     render xml: {ToUserName: "wechat", FromUserName: "JevanWu", CreateTime: "123456", MsgType: "text", Content: "It's a test"}
   end
 
