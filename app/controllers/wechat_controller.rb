@@ -4,10 +4,10 @@ class WechatController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => [:receiver]
 
   def receiver
-    if params[:signature]
-      process_get_request
-    else
+    if request.request_method == "POST"
       process_post_request
+    else
+      process_get_request
     end
   end
 
@@ -29,7 +29,7 @@ class WechatController < ApplicationController
   end
 
   def process_post_request
-    msg_type = REXML::XPath.first(request.body, "/MsgType").value
+    msg_type = REXML::XPath.first(request, "MsgType").value
     puts msg_type
     render xml: {ToUserName: "wechat", FromUserName: "JevanWu", CreateTime: "123456", MsgType: "text", Content: "It's a test"}
   end
