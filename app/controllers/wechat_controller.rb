@@ -26,9 +26,9 @@ class WechatController < ApplicationController
   end
 
   def decrypt(signature, timestamp, nonce)
-    credential = [signature, timestamp, nonce]
-    credential.sort
-    credential.join("")
-    Digest::SHA1.hexdigest credential
+    signature_array = [signature, timestamp, nonce]
+    signature_array.sort
+    signature_string = signature_array.join("")
+    Digest::SHA1.hexdigest signature_string
   end
 end
