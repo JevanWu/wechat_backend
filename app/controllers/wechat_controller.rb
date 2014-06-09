@@ -28,6 +28,7 @@ class WechatController < ApplicationController
   end
 
   def process_post_request
+    render xml: {ToUserName: "wechat", FromUserName: "JevanWu", CreateTime: "123456", MsgType: "text", Content: "It's a test"}
   end
 
   def check_signature(signature, timestamp, nonce, token)
