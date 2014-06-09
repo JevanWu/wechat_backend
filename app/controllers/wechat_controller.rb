@@ -7,7 +7,7 @@ class WechatController < ApplicationController
     timestamp = params[:timestamp]
     nonce = params[:nonce]
     echostr = params[:echostr]
-    token = "EuK8378d11ckeRXam86T5Pt37z6W1F8b"
+    token = "hualirocks2014"
 
     if check_signature(signature, timestamp, nonce, token)
       render text: echostr
