@@ -1,6 +1,5 @@
 require 'digest/sha1'
 class WechatController < ApplicationController
-  respond_to :json
   
   def receiver
     signature = params[:signature]
@@ -20,18 +19,18 @@ class WechatController < ApplicationController
   private
 
   def check_signature(signature, timestamp, nonce, token)
-    decrypted_token = decrypt(token, timestamp, nonce)
+    encrypted_token = encrypt(token, timestamp, nonce)
 
-    if decrypted_token == signature
+    if encrypted_token == signature
       return true
     else
       return false
     end
   end
 
-  def decrypt(token, timestamp, nonce)
+  def encrypt(token, timestamp, nonce)
     signature_array = [token, timestamp, nonce]
-    signature_array.sort
+    signature_array.sort!
     signature_string = signature_array.join("")
     Digest::SHA1.hexdigest signature_string
   end
