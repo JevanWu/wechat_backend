@@ -1,5 +1,6 @@
 require 'digest/sha1'
-require 'Nokogiri'
+require 'nokogiri'
+
 class WechatController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => [:receiver]
 
