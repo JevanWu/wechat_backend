@@ -29,14 +29,32 @@ class WechatController < ApplicationController
   end
 
   def process_post_request
-    puts "msg type is:"
-    logger.info params[:xml][:MsgType]
-    # logger.info request.inspect
-    xml_info = Nokogiri::XML params
-    msg_type = xml_info.xpath "/xml//MsgType"
-    # logger.info msg_type.text()
-    # logger.info xml_info.xpath "/MsgType".text()
-    render xml: {ToUserName: "wechat", FromUserName: "JevanWu", CreateTime: "123456", MsgType: "text", Content: "It's a test"}
+    msg_type = params[:xml][:MsgType]
+    if msg_type == "event"
+      process_event_msg
+    elsif msg_type == "text"
+      process_text_msg
+    end
+  end
+
+  def process_event_msg
+    event = params[:xml][:Event]
+    to_user_name = params[:xml][:ToUserName]
+    from_user_name = params[:xml][:FromUserName]
+    create_time = params[:xml][:CreateTime]
+    if event == "Subscribe"
+      process_subscribe(from_user_name, to_user_name, create_time)
+    elsif event == "Unsubscribe"
+      process_unsubscribe(from_user_name, to_user_name, create_time)
+    end
+  end
+
+  def process_subscribe(from_user_name, to_user_name, create_time)
+    render xml: {ToUserName: from_user_name, FromUserName: to_user_name, CreateTime: create_time, MsgType: "text", Content: "This is a subscribe event"}
+  end
+
+  def process_unsubscribe(from_user_name, to_user_name, create_time)
+    render xml: {ToUserName: from_user_name, FromUserName: to_user_name, CreateTime: create_time, MsgType: "text", Content: "This is an unscribe event"}
   end
 
   def check_signature(signature, timestamp, nonce, token)
