@@ -49,6 +49,9 @@ gem 'summernote-rails'
 #nokogiri
 gem 'nokogiri'
 
+#xml parser
+gem 'actionpack-xml_parser'
+
 group :development do
   gem 'pry'
   #capistrano for deploying

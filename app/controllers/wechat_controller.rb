@@ -29,7 +29,7 @@ class WechatController < ApplicationController
   end
 
   def process_post_request
-    puts "msg type is :"
+    puts "msg type is:"
     logger.info params[:xml][:MsgType]
     # logger.info request.inspect
     xml_info = Nokogiri::XML params
