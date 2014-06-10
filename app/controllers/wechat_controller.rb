@@ -29,8 +29,8 @@ class WechatController < ApplicationController
   end
 
   def process_post_request
-    logger.debug params.inspect
-    logger.debug request.body.inspect
+    logger.info params.inspect
+    logger.info request.inspect
     xml_info = Nokogiri::XML params
     msg_type = xml_info.xpath "/xml//MsgType"
     logger.info msg_type.text()
