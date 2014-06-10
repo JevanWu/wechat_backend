@@ -29,12 +29,13 @@ class WechatController < ApplicationController
   end
 
   def process_post_request
-    logger.info params.inspect
-    logger.info request.inspect
+    puts "msg type is :"
+    logger.info params[:xml][:MsgType]
+    # logger.info request.inspect
     xml_info = Nokogiri::XML params
     msg_type = xml_info.xpath "/xml//MsgType"
-    logger.info msg_type.text()
-    logger.info xml_info.xpath "/MsgType".text()
+    # logger.info msg_type.text()
+    # logger.info xml_info.xpath "/MsgType".text()
     render xml: {ToUserName: "wechat", FromUserName: "JevanWu", CreateTime: "123456", MsgType: "text", Content: "It's a test"}
   end
 
