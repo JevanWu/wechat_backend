@@ -46,6 +46,9 @@ gem 'font-awesome-sass'
 #summernote
 gem 'summernote-rails'
 
+#nokogiri
+gem 'nokogiri'
+
 group :development do
   gem 'pry'
   #capistrano for deploying
