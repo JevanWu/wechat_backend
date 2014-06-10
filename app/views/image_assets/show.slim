@@ -6,6 +6,6 @@
         br
         .col-md-4
           .thumbnail
-            = image_tag @image_text.cover.url
+            = image_tag @image_asset.image.url
             .captain 
-              p.text-center = @image_text.cover_file_name
+              p.text-center = @image_asset.image_file_name

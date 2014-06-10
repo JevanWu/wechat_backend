@@ -1,0 +1,8 @@
+.container
+  = render "shared/assets_menu"
+  .col-md-9
+    .row
+      .main-content
+        .thumbnail
+          - @news_asset_collection.news_assets.each do |news_asset|
+            = image_tag news_asset.cover.url

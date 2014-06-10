@@ -5,7 +5,7 @@ class CreateAssets < ActiveRecord::Migration
       t.string :type
       t.string :author
       t.text :body
-      t.references :image_text_collection
+      t.references :news_asset_collection
       t.attachment :assets, :cover
       t.attachment :assets, :image
 

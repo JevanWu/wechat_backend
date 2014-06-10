@@ -7,23 +7,23 @@ common: &common
 
 development:
   <<: *common
-  database: huali_dev
+  database: huali_wechat_dev
 
 test:
   <<: *common
-  database: huali_test
+  database: huali__wechat_test
 
 staging:
   adapter: postgresql
   encoding: unicode
-  database: huali_dev
+  database: huali_wechat_production
   pool: 5
   host: localhost
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: huali_production
+  database: huali_wechat_production
   pool: 18
   username: huali
   password: IShveVzpaUKhWc4bxNAwoQ=

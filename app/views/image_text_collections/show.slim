@@ -1,8 +1,0 @@
-.container
-  = render "shared/assets_menu"
-  .col-md-9
-    .row
-      .main-content
-        .thumbnail
-          - @image_text_collection.image_texts.each do |image_text|
-            = image_tag image_text.cover.url

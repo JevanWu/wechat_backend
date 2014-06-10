@@ -4,9 +4,9 @@ HualiWechat::Application.routes.draw do
 
   root 'auto_replies#index'
   resources :assets
-  resources :image_texts
-  resources :image_text_collections
-  resources :images
+  resources :news_assets
+  resources :news_asset_collections
+  resources :image_assets
 
   get 'wechat/receiver', to: 'wechat#receiver'
   post 'wechat/receiver', to: 'wechat#receiver'

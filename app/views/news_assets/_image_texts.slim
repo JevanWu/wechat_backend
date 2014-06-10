@@ -1,0 +1,14 @@
+br
+.row
+  - if !@news_assets.nil?
+    - @news_assets.each do |news_asset|
+      - unless news_asset.news_asset_collection_id
+        .col-md-4
+          .thumbnail
+            h3.text-center = news_asset.title
+            = image_tag news_asset.cover.url
+            .caption
+              p 
+                = link_to "edit", edit_news_asset_path(news_asset)
+                | &nbsp;
+                = link_to "delete", news_asset_path(news_asset), method: :delete, data: {confirm: "are you sure?"}
