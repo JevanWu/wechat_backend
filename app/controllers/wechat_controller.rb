@@ -50,11 +50,16 @@ class WechatController < ApplicationController
   end
 
   def process_subscribe(from_user_name, to_user_name, create_time)
-    render xml: {ToUserName: from_user_name, FromUserName: to_user_name, CreateTime: create_time, MsgType: "text", Content: "This is a subscribe event"}
+    render xml: {ToUserName: from_user_name, FromUserName: to_user_name, CreateTime: generate_create_time, MsgType: "text", Content: "This is a subscribe event"}
   end
 
   def process_unsubscribe(from_user_name, to_user_name, create_time)
-    render xml: {ToUserName: from_user_name, FromUserName: to_user_name, CreateTime: create_time, MsgType: "text", Content: "This is an unscribe event"}
+    render xml: {ToUserName: from_user_name, FromUserName: to_user_name, CreateTime: generate_create_time, MsgType: "text", Content: "This is an unscribe event"}
+  end
+
+  def generate_create_time(time=Time.now)
+    create_time = (time - Time.new(1970)) * 1000
+    return create_time.to_i
   end
 
   def check_signature(signature, timestamp, nonce, token)
