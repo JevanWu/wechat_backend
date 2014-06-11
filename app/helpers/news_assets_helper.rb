@@ -1,2 +1,2 @@
-module ImageTextsHelper
+module NewsAssetsHelper
 end

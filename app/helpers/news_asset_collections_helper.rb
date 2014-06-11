@@ -1,4 +1,4 @@
-module ImageTextCollectionsHelper
+module NewsAssetCollectionsHelper
   def link_to_remove_field(name, index)
     link_to_function name, "remove_fields(this, \"#myModal#{index}\")", class: "btn btn-default"
   end
