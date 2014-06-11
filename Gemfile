@@ -52,6 +52,9 @@ gem 'nokogiri'
 #xml parser
 gem 'actionpack-xml_parser'
 
+#for wechat api
+gem "wechat-rails", git:"https://github.com/skinnyworm/wechat-rails"
+
 gem "figaro"
 
 group :development do

@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/skinnyworm/wechat-rails
+  revision: b7acbc05aa5caec68278339c21f15a56406fe427
+  specs:
+    wechat-rails (0.1.1)
+      nokogiri (>= 1.6.0)
+      rails (>= 3.2.14)
+      rest-client
+
 GEM
   remote: http://ruby.taobao.org/
   specs:
@@ -114,6 +123,8 @@ GEM
     rake (10.3.2)
     rdoc (4.1.1)
       json (~> 1.4)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     sass (3.2.19)
     sass-rails (4.0.3)
       railties (>= 4.0.0, < 5.0)
@@ -195,3 +206,4 @@ DEPENDENCIES
   turbolinks
   uglifier (>= 1.3.0)
   unicorn
+  wechat-rails!
