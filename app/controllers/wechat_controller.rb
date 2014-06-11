@@ -33,8 +33,17 @@ class WechatController < ApplicationController
     if msg_type == "event"
       process_event_msg
     elsif msg_type == "text"
-      process_text_msg
+      process_normal_msg
     end
+  end
+
+  def process_normal_msg
+    to_user_name = params[:xml][:ToUserName]
+    from_user_name = params[:xml][:FromUserName]
+    create_time = params[:xml][:CreateTime]
+    content = params[:xml][:Content]
+    message = TextMessage.where(label: "default").first
+    render xml: {ToUserName: from_user_name, FromUserName: to_user_name, CreateTime: generate_create_time, MsgType: "text", Content: message.content }
   end
 
   def process_event_msg
