@@ -9,7 +9,7 @@ HualiWechat::Application.routes.draw do
   resources :image_assets
 
   get 'subscribed_reply', to: 'auto_replies#subscribed_reply', as: 'subscribed_reply'
-  post 'subscribed_reply/:id', to: 'auto_replies#update_subscribed_reply', as: 'subscribed_reply'
+  patch 'subscribed_reply/:id', to: 'auto_replies#update_subscribed_reply', as: 'update_subscribed_reply'
   get 'wechat/receiver', to: 'wechat#receiver'
   post 'wechat/receiver', to: 'wechat#receiver'
   # You can have the root of your site routed with "root"
