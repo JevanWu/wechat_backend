@@ -42,20 +42,8 @@ class WechatController < ApplicationController
     to_user_name = params[:xml][:ToUserName]
     from_user_name = params[:xml][:FromUserName]
     create_time = params[:xml][:CreateTime]
-    if event == "Subscribe"
-      process_subscribe(from_user_name, to_user_name, create_time)
-    elsif event == "Unsubscribe"
-      process_unsubscribe(from_user_name, to_user_name, create_time)
-    end
-  end
-
-  def process_subscribe(from_user_name, to_user_name, create_time)
-    @message = TextMessage.where(label: "subscribed").first
-    render xml: {ToUserName: from_user_name, FromUserName: to_user_name, CreateTime: generate_create_time, MsgType: "text", Content: @message.content }
-  end
-
-  def process_unsubscribe(from_user_name, to_user_name, create_time)
-    render xml: {ToUserName: from_user_name, FromUserName: to_user_name, CreateTime: generate_create_time, MsgType: "text", Content: "This is an unscribe event"}
+    message = TextMessage.where(label: event.downcase).first
+    render xml: {ToUserName: from_user_name, FromUserName: to_user_name, CreateTime: generate_create_time, MsgType: "text", Content: message.content }
   end
 
   def generate_create_time(time=Time.now)
