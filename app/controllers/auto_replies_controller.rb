@@ -1,7 +1,7 @@
 class AutoRepliesController < ApplicationController
 
   def subscribed_reply
-    @text_message = TextMessage.where(label: "subscribed").first || TextMessage.create(content: "Type your message here", label: "subscribed")
+    @text_message = TextMessage.where(label: "subscribe").first || TextMessage.create(content: "Type your message here", label: "subscribe")
   end
 
   def update_subscribed_reply
