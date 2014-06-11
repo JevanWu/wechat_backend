@@ -50,7 +50,8 @@ class WechatController < ApplicationController
   end
 
   def process_subscribe(from_user_name, to_user_name, create_time)
-    render xml: {ToUserName: from_user_name, FromUserName: to_user_name, CreateTime: generate_create_time, MsgType: "text", Content: "This is a subscribe event"}
+    @message = TextMessage.where(label: "subscribed").first
+    render xml: {ToUserName: from_user_name, FromUserName: to_user_name, CreateTime: generate_create_time, MsgType: "text", Content: @message.content }
   end
 
   def process_unsubscribe(from_user_name, to_user_name, create_time)
