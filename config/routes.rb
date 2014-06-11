@@ -2,12 +2,14 @@ HualiWechat::Application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  root 'auto_replies#index'
+  root 'auto_replies#subscribed_reply'
   resources :assets
   resources :news_assets
   resources :news_asset_collections
   resources :image_assets
 
+  get 'subscribed_reply', to: 'auto_replies#subscribed_reply', as: 'subscribed_reply'
+  post 'subscribed_reply/:id', to: 'auto_replies#update_subscribed_reply', as: 'subscribed_reply'
   get 'wechat/receiver', to: 'wechat#receiver'
   post 'wechat/receiver', to: 'wechat#receiver'
   # You can have the root of your site routed with "root"
