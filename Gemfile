@@ -52,6 +52,8 @@ gem 'nokogiri'
 #xml parser
 gem 'actionpack-xml_parser'
 
+gem "figaro"
+
 group :development do
   gem 'pry'
   #capistrano for deploying
