@@ -12,11 +12,11 @@
           = link_to "Multiple Assets", new_news_asset_collection_path
     .main-content
       .image-texts
-        h3 
-          | Single Image Text:
+        .page-header
+          h3 Single Image Text:
         = render "image_texts" 
       br
       .image-text-collections
-        h3 
-          | Multiple Image Text:
+        .page-header
+          h3 Multiple Image Text:
         = render "image_text_collections"

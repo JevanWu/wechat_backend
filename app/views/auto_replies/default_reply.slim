@@ -2,7 +2,8 @@
   = render "shared/auto_reply_menu"
   .col-md-9
     .main-content
-      h3 Default Reply
+      .page-header
+        h3 Default Reply
       = simple_form_for @text_message, url: update_default_reply_path(@text_message) do |f|
         = f.input :content, input_html: { class: "summernote" }, label: false
         = f.button :submit
