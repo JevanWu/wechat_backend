@@ -1,12 +1,12 @@
 class WechatsController < ApplicationController
   wechat_responder
 
-  on :event, with: "Subscribe" do |request|
+  on :event, with: "subscribe" do |request|
     message = TextMessage.where(label: "subscribe").first
     request.reply.text "#{message.content}" unless message.nil?
   end
 
-  on :event, with: "Unsubscribe" do |request|
+  on :event, with: "unsubscribe" do |request|
     message = TextMessage.where(label: "unsubscribe").first
     request.reply.text "#{message.content}" unless message.nil?
   end
