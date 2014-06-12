@@ -5,6 +5,7 @@ HualiWechat::Application.routes.draw do
   resources :news_assets
   resources :news_asset_collections
   resources :image_assets
+  resources :text_messages
 
   get 'wechats', to: 'wechats#show'
   post 'wechats', to: 'wechats#create'

@@ -1,3 +1,4 @@
 class Message < ActiveRecord::Base
-  validates :label, uniqueness: true, inclusion: { in: %w(subscribe unsubscribe default)}
+  validates :keyword, uniqueness: true
+  scope :all_except_event_messages, -> { where.not(keyword: ["subscribe", "unsubscribe", "default"]) }
 end

@@ -16,7 +16,10 @@ class WechatsController < ApplicationController
     request.reply.text message.content unless message.nil?
   end
 
-  on :text, with: "help" do |request, help|
-    request.reply.text "This is help content"
+  #key words replies
+  Message.all_except_event_messages.each do |message|
+    on :text, with: message.keyword do |request|
+      request.reply.text message.content unless message.nil?
+    end
   end
 end

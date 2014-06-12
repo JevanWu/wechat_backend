@@ -1,0 +1,5 @@
+= simple_form_for @text_message do |f|
+  = f.input :keyword
+  = f.input :type, as: :hidden, input_html: { value: "TextMessage" }
+  = f.input :content, input_html: { class: "summernote" }
+  = f.button :submit, value: "submit"

@@ -1,0 +1,10 @@
+.container
+  = render "shared/auto_reply_menu"
+  .col-md-9
+    .main-content
+      .page-header
+        h3 
+          | Keyword Replies
+          .pull-right
+            = link_to " New ", new_text_message_path, class: "btn btn-success"
+      = render "text_messages" 
