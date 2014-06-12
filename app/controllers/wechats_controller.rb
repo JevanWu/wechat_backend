@@ -1,5 +1,4 @@
 class WechatsController < ApplicationController
-  skip_before_filter :verify_authenticity_token, :only => [:receiver]
   wechat_responder
 
   # on :event, with "subscribe" do |request|
@@ -9,6 +8,6 @@ class WechatsController < ApplicationController
 
   on :text do |request, content|
     message = TextMessage.where(label: "default").first
-    request.reply.text "echo: #{message.content}"
+    request.reply.text message.content unless message.nil?
   end
 end
