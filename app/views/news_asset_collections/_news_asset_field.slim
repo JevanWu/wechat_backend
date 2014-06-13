@@ -10,7 +10,8 @@
         = f.input :title
         = f.input :author
         = f.input :cover, as: :file
-        = f.input :body, input_html: { class: "summernote" }
+        = f.input :description, input_html: { class: "summernote" }
+        = f.input :url
         = f.input :_destroy, as: :hidden
       .modal-footer
         button.btn.btn-primary(type="button" data-dismiss="modal")

@@ -7,10 +7,6 @@ class NewsAssetsController < ApplicationController
 
   def new
     @news_asset = NewsAsset.new
-    # @partial = params[:partial]
-    # respond_to do |format|
-    #   format.js { render "update.js" }
-    # end
   end
 
   def edit
@@ -44,6 +40,6 @@ class NewsAssetsController < ApplicationController
   private
 
   def news_asset_params
-    params.require(:news_asset).permit(:title, :author, :cover, :body)
+    params.require(:news_asset).permit(:title, :author, :cover, :description, :url)
   end
 end

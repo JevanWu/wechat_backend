@@ -42,6 +42,6 @@ class NewsAssetCollectionsController < ApplicationController
   private
 
   def collection_params
-    params.require(:news_asset_collection).permit(news_assets_attributes: [:id, :title, :author, :cover, :body, :_destroy])
+    params.require(:news_asset_collection).permit(news_assets_attributes: [:id, :title, :author, :cover, :description, :url, :_destroy])
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140612075237) do
+ActiveRecord::Schema.define(version: 20140613023341) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20140612075237) do
     t.string   "title"
     t.string   "type"
     t.string   "author"
-    t.text     "body"
+    t.text     "description"
     t.integer  "news_asset_collection_id"
     t.string   "assets_file_name"
     t.string   "assets_content_type"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20140612075237) do
     t.datetime "image_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "url"
   end
 
   create_table "messages", force: true do |t|
