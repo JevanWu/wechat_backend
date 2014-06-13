@@ -1,10 +1,13 @@
 class CreateAssets < ActiveRecord::Migration
   def change
     create_table :assets do |t|
-      t.string :title
       t.string :type
+      t.string :title
       t.string :author
-      t.text :body
+      t.text :description
+      t.string :picurl
+      t.string :url
+      t.integer :media_id
       t.references :news_asset_collection
       t.attachment :assets, :cover
       t.attachment :assets, :image

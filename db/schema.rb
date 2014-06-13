@@ -11,16 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140613023341) do
+ActiveRecord::Schema.define(version: 20140613064429) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "assets", force: true do |t|
-    t.string   "title"
     t.string   "type"
+    t.string   "title"
     t.string   "author"
     t.text     "description"
+    t.string   "picurl"
+    t.string   "url"
+    t.integer  "media_id"
     t.integer  "news_asset_collection_id"
     t.string   "assets_file_name"
     t.string   "assets_content_type"
@@ -36,27 +39,21 @@ ActiveRecord::Schema.define(version: 20140613023341) do
     t.datetime "image_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "url"
   end
 
-  create_table "messages", force: true do |t|
-    t.string   "type"
+  create_table "keywords", force: true do |t|
     t.string   "keyword"
-    t.text     "content"
-    t.integer  "media_id"
-    t.string   "title"
-    t.text     "description"
-    t.string   "music_url"
-    t.string   "hq_music_url"
-    t.string   "thumb_media_id"
-    t.integer  "article_count"
-    t.string   "picurl"
-    t.string   "url"
+    t.integer  "reply_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "news_asset_collections", force: true do |t|
+  add_index "keywords", ["reply_id"], name: "index_keywords_on_reply_id", using: :btree
+
+  create_table "replies", force: true do |t|
+    t.string   "type"
+    t.text     "content"
+    t.integer  "asset_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

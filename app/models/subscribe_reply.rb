@@ -1,0 +1,2 @@
+class SubscribeReply < Reply
+end

@@ -1,0 +1,2 @@
+class OrdinaryReply < Reply
+end
