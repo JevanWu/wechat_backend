@@ -23,6 +23,11 @@ class OrdinaryRepliesController < ApplicationController
 
   def create
     @ordinary_reply = OrdinaryReply.create(permitted_params)
+    keywords = params[:ordinary_reply][:keyword].split(", ")
+    binding.pry
+    keywords.each do |keyword|
+      @ordinary_reply.keywords.create(keyword: keyword)
+    end
     redirect_to ordinary_reply_path(@ordinary_reply)
   end
 
@@ -39,6 +44,6 @@ class OrdinaryRepliesController < ApplicationController
   private
 
   def permitted_params
-    params.require(:ordinary_reply).permit(:type, :keyword, :content)
+    params.require(:ordinary_reply).permit(:content, :asset_id)
   end
 end

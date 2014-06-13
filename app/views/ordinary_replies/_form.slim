@@ -1,0 +1,5 @@
+= simple_form_for @ordinary_reply do |f|
+  = f.input :keyword
+  = f.input :content, input_html: { class: "summernote" }
+  = f.input :asset_id, as: :select, collection: NewsAsset.ids
+  = f.button :submit, value: "submit"

@@ -1,0 +1,16 @@
+.container
+  = render "shared/auto_reply_menu"
+  .col-md-9
+    .main-content
+      p
+        - @ordinary_reply.keywords.each do |keyword|
+          - @collection = ""
+          - @collection = @collection + keyword.keyword
+        | keyword: 
+        = @collection
+      p
+        | content: 
+        = @ordinary_reply.content
+      p
+        | asset: 
+        = @ordinary_reply.asset_id

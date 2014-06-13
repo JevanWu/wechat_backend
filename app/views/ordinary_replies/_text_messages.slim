@@ -1,0 +1,15 @@
+table.table.table-hover
+  thead
+    tr
+      th Keyword
+      th Content
+      th Control
+  tbody
+    - @ordinary_replies.each do |ordinary_reply|
+      tr
+        td = "keywords"
+        td = ordinary_reply.content
+        td
+           = link_to "edit", edit_ordinary_reply_path(ordinary_reply)
+           = " "
+           = link_to "delete", ordinary_reply_path(ordinary_reply), method: :delete, data: { confirm: "Are you sure?" }
