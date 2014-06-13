@@ -3,7 +3,7 @@
   .col-md-9
     .main-content
       .page-header
-        h3 Default Reply
-      = simple_form_for @text_message, url: update_default_reply_path(@text_message) do |f|
+        h3 Subscribe Reply
+      = simple_form_for @subscribe_reply, url: subscribe_reply_path(@subscribe_reply) do |f|
         = f.input :content, input_html: { class: "summernote" }, label: false
         = f.button :submit
