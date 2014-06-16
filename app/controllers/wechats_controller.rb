@@ -18,15 +18,13 @@ class WechatsController < ApplicationController
 
         request.reply.text reply.content if reply.asset_id.nil?
 
-        if reply.asset.is_a?NewsAsset
-          request.reply.text reply.content 
-        elsif reply.asset.is_a?NewsAssetCollection
-          request.reply.text reply.content 
-          # assets_count = reply.asset.news_asset.count
-          # articles_range = (0... [assets_count, 10].min)
-          # request.reply.news(articles_range) do |article, i| 
-          #   article.item title: "#{reply.title}", description:"内容描述#{i}", pic_url: "http://www.baidu.com/img/bdlogo.gif", url:"http://www.baidu.com/"
-          # end
+        if reply.asset.is_a?NewsAssetCollection
+          collection = reply.asset.news_asset
+          assets_count = collection.count
+          articles_range = (0... [assets_count, 10].min)
+          request.reply.news(articles_range) do |article, i| 
+            article.item title: collection[i].title, description: collection[i].description, pic_url: root_url + collection[i].cover.url, url: collection[i].url
+          end
           
         elsif reply.asset.is_a?ImageAsset 
           request.reply.text reply.content
