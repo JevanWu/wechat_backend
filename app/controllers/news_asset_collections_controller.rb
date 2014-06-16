@@ -6,7 +6,7 @@ class NewsAssetCollectionsController < ApplicationController
 
   def new
     @news_asset_collection = NewsAssetCollection.new
-    3.times { @news_asset = @news_asset_collection.news_assets.build }
+    @news_asset = @news_asset_collection.news_assets.build 
     # end
   end
 

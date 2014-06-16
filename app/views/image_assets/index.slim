@@ -1,7 +1,10 @@
 .container
   = render "shared/assets_menu"
   .col-md-9
-    = link_to " New ", new_image_asset_path, class: "btn btn-success"
+    .page-header
+      h3
+        | Image
+        = link_to " New ", new_image_asset_path, class: "btn btn-success pull-right"
     .main-content
       br
       .row
