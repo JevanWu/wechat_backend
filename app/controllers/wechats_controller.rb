@@ -23,7 +23,7 @@ class WechatsController < ApplicationController
           assets_count = collection.count
           articles_range = (0... [assets_count, 10].min)
           request.reply.news(articles_range) do |article, i| 
-            article.item title: collection[i].title, description: collection[i].description, pic_url: "http://www." + request.host_with_port + collection[i].cover.url, url: collection[i].url
+            article.item title: collection[i].title, description: collection[i].description, pic_url: "http://wechat.hua.li" + collection[i].cover.url, url: collection[i].url
           end
           
         elsif reply.asset.is_a?ImageAsset 
