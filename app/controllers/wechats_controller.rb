@@ -8,7 +8,7 @@ class WechatsController < ApplicationController
 
   on :text do |request, content|
     reply = DefaultReply.first
-    request.reply.text message.content unless message.nil?
+    request.reply.text reply.content unless reply.nil?
   end
 
   #key words replies
