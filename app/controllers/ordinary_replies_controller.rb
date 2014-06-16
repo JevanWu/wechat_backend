@@ -24,7 +24,6 @@ class OrdinaryRepliesController < ApplicationController
   def create
     @ordinary_reply = OrdinaryReply.create(permitted_params)
     keywords = params[:ordinary_reply][:keyword].split(", ")
-    binding.pry
     keywords.each do |keyword|
       @ordinary_reply.keywords.create(keyword: keyword)
     end
@@ -38,7 +37,7 @@ class OrdinaryRepliesController < ApplicationController
   def destroy
     @ordinary_reply = OrdinaryReply.find(params[:id])
     @ordinary_reply.destroy
-    redirect_to ordinary_replys_path
+    redirect_to ordinary_replies_path
   end
 
   private
