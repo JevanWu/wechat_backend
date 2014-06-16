@@ -19,7 +19,7 @@ class WechatsController < ApplicationController
         request.reply.text reply.content if reply.asset_id.nil?
 
         if reply.asset.is_a?NewsAssetCollection
-          collection = reply.asset.news_asset
+          collection = reply.asset.news_assets
           assets_count = collection.count
           articles_range = (0... [assets_count, 10].min)
           request.reply.news(articles_range) do |article, i| 
