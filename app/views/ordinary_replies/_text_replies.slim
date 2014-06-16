@@ -6,8 +6,9 @@ table.table.table-hover
       th Control
   tbody
     - @ordinary_replies.each do |ordinary_reply|
+      - next if ordinary_reply.asset_id
       tr
-        td = "keywords"
+        td = ordinary_reply.keywords.map(&:keyword).join(", ")
         td = ordinary_reply.content
         td
            = link_to "edit", edit_ordinary_reply_path(ordinary_reply)

@@ -1,0 +1,16 @@
+table.table.table-hover
+  thead
+    tr
+      th Keyword
+      th Asset
+      th Control
+  tbody
+    - @ordinary_replies.each do |ordinary_reply|
+      - next if ordinary_reply.asset_id.nil?
+      tr
+        td = ordinary_reply.keywords.map(&:keyword).join(", ")
+        td = ordinary_reply.asset_id
+        td
+           = link_to "edit", edit_ordinary_reply_path(ordinary_reply)
+           = " "
+           = link_to "delete", ordinary_reply_path(ordinary_reply), method: :delete, data: { confirm: "Are you sure?" }
