@@ -10,7 +10,9 @@
             .thumbnail
               = image_tag image_asset.image.url
               .captain 
-                p.text-center = image_asset.image_file_name
+                p
+                  | Asset id: 
+                  = image_asset.id
                 p
                   = link_to "edit", edit_image_asset_path(image_asset)
                   | &nbsp;

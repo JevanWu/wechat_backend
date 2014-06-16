@@ -8,6 +8,9 @@ br
             = image_tag news_asset.cover.url
           .caption
             p 
+              | Asset id: 
+              = collection.id
+            p 
               = link_to "edit", edit_news_asset_collection_path(collection)
               | &nbsp;
               = link_to "delete", news_asset_collection_path(collection), method: :delete, data: {confirm: "are your sure?"}
