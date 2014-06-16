@@ -44,7 +44,7 @@
           h4.modal-title#myModalLabel
             = "Modal title"
         .modal-body
-          = f.input :asset_id, as: :select, collection: NewsAsset.ids
+          = f.input :asset_id, as: :select, collection: NewsAssetCollection.ids
         .modal-footer
           button.btn.btn-primary(type="button" data-dismiss="modal")
             | Save
