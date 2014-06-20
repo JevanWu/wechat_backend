@@ -27,7 +27,7 @@ class WechatsController < ApplicationController
           end
           
         elsif reply.asset.is_a?ImageAsset 
-          request.reply.text reply.content
+          request.reply.image reply.asset.media_id
         end
       end
     end

@@ -9,8 +9,12 @@ class ImageAssetsController < ApplicationController
   end
 
   def create
-    @image_asset = ImageAsset.create(image_asset_params)
-    redirect_to image_asset_path(@image_asset)
+    if @image_asset = ImageAsset.create(image_asset_params)
+      WechatUploader.upload_image(@image_asset)
+      redirect_to image_asset_path(@image_asset)
+    else
+      render 'new'
+    end
   end
 
   def edit
