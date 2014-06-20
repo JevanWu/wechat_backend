@@ -6,7 +6,6 @@ class WechatUploader
     wechat_app_secret = ENV["WECHAT_APP_SECRET"]
     wechat_token_file = ENV["WECHAT_ACCESS_TOKEN"]
     if wechat_appid && wechat_app_secret && wechat_token_file
-      puts "appid:" + wechat_appid
       wechat_api = Wechat::Api.new(wechat_appid, wechat_app_secret, wechat_token_file)
       file = File.new(complete_path)
       return_params = wechat_api.media_create("image", file)
