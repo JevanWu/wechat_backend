@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20140613064429) do
     t.text     "description"
     t.string   "picurl"
     t.string   "url"
-    t.integer  "media_id"
+    t.string   "media_id"
     t.integer  "news_asset_collection_id"
     t.string   "assets_file_name"
     t.string   "assets_content_type"

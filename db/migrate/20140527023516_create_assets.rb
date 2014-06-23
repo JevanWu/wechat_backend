@@ -7,7 +7,7 @@ class CreateAssets < ActiveRecord::Migration
       t.text :description
       t.string :picurl
       t.string :url
-      t.integer :media_id
+      t.string :media_id
       t.references :news_asset_collection
       t.attachment :assets, :cover
       t.attachment :assets, :image
