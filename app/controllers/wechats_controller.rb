@@ -19,6 +19,7 @@ class WechatsController < ApplicationController
         request.reply.text reply.content if reply.asset_id.nil?
 
         if reply.asset.is_a?NewsAssetCollection
+          logger.info "news asset collection"
           collection = reply.asset.news_assets
           assets_count = collection.count
           articles_range = (0... [assets_count, 10].min)
@@ -27,7 +28,7 @@ class WechatsController < ApplicationController
           end
           
         elsif reply.asset.is_a?ImageAsset 
-          puts "media_id:" + reply.asset.media_id
+          logger.info "media_id:" + reply.asset.media_id.inspect
           request.reply.image reply.asset.media_id
         end
       end
