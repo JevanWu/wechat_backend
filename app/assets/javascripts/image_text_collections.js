@@ -1,4 +1,4 @@
-function remove_fields(link, modal) {
+function remove_fields(link) {
   var modal = $(link).closest(".fields").children("img").data("target");
   $(modal).find("input[type=hidden]").val("1");
   $(link).closest(".fields").hide();
