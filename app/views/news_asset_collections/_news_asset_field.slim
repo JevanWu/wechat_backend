@@ -1,10 +1,10 @@
-.modal.fade(id="myModal#{index}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true")
+.modal.fade(id="modal#{index}" tabindex="-1" role="dialog" aria-hidden="true")
   .modal-dialog
     .modal-content
       .modal-header
         button.close(type="button" data-dismiss="modal" aria-hidden="true")
           | &times;
-        h4.modal-title#myModalLabel
+        h4.modal-title
           = "Modal title"
       .modal-body
         = f.input :title

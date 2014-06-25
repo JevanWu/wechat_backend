@@ -1,10 +1,11 @@
+
+- require 'pry'
 = simple_form_for @news_asset_collection do |f|
-  - @news_asset_collection.news_assets.each_with_index do |news_asset, index|
-    .thumbnail.fields
-      = image_tag "default_image.gif", data: {toggle: "modal", target: "#myModal#{index}"}
-      = link_to_remove_field "Remove", index 
+  .thumbnail.fields
+    = image_tag "default_image.gif", data: {toggle: "modal", target: "#modal0"}
+    = link_to_remove_field "Remove" 
 
   = link_to_add_field "Add", f
   = f.simple_fields_for :news_assets do |sf|
-    = render "news_asset_field", f: sf, index: sf.options[:child_index] - 1
+    = render "news_asset_field", f: sf, index: 0 
   = f.button :submit, value: "submit"
