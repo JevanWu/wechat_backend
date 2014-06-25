@@ -1,52 +1,10 @@
 = simple_form_for @ordinary_reply do |f|
   = f.input :keyword
-  .btn.btn-success(data-toggle = "modal" data-target = "#text-modal")
-    | Text
-  .btn.btn-success(data-toggle = "modal" data-target = "#image-modal")
-    | Image & News
-  /*.btn.btn-success(data-toggle = "modal" data-target = "#news-asset-modal")*/
-  /*  | News*/
 
-  /*TODO: refactor*/
-  .modal.fade(id="text-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true")
-    .modal-dialog
-      .modal-content
-        .modal-header
-          button.close(type="button" data-dismiss="modal" aria-hidden="true")
-            | &times;
-          h4.modal-title#myModalLabel
-            = "Modal title"
-        .modal-body
-          = f.input :content, input_html: { class: "summernote" }
-        .modal-footer
-          button.btn.btn-primary(type="button" data-dismiss="modal")
-            | Save
-  .modal.fade(id="image-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true")
-    .modal-dialog
-      .modal-content
-        .modal-header
-          button.close(type="button" data-dismiss="modal" aria-hidden="true")
-            | &times;
-          h4.modal-title#myModalLabel
-            = "Modal title"
-        .modal-body
-          = f.input :asset_id, as: :select, collection: Asset.ids
-        .modal-footer
-          button.btn.btn-primary(type="button" data-dismiss="modal")
-            | Save
-
-  /*.modal.fade(id="news-asset-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true")*/
-  /*  .modal-dialog*/
-  /*    .modal-content*/
-  /*      .modal-header*/
-  /*        button.close(type="button" data-dismiss="modal" aria-hidden="true")*/
-  /*          | &times;*/
-  /*        h4.modal-title#myModalLabel*/
-  /*          = "Modal title"*/
-  /*      .modal-body*/
-  /*        = f.input :asset_id, as: :select, collection: NewsAssetCollection.ids*/
-  /*      .modal-footer*/
-  /*        button.btn.btn-primary(type="button" data-dismiss="modal")*/
-  /*          | Save*/
+  - %w(text image news).each do |type|
+    .btn.btn-success(data-toggle = "modal" data-target = "##{type}-modal")
+      = type.capitalize
+    | &nbsp
+    = render "modal_partial", type: type, f: f
   p
   p = f.button :submit, value: "submit"
