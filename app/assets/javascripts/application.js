@@ -15,5 +15,5 @@
 //= require turbolinks
 //= require bootstrap
 //= require summernote
-//= require news-assets
+//= require load-summernote 
 //= require news-asset-collections

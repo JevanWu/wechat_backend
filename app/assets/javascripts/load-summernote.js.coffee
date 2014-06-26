@@ -2,8 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-loadSummernote = ->
-
+window.loadSummernote = ->
   # to set summernote object
   # You should change '#post_content' to your textarea input id
   # if $('#image_text_body').length != 0
@@ -16,17 +15,17 @@ loadSummernote = ->
     # to set options
     height:300
     #lang: 'ko-KR'
-    # toolbar: [
+    toolbar: [
                 # ['insert', ['picture', 'link']], // no insert buttons
-                # ["table", ["table"]],
-                # ["style", ["style"]],
-                # ["fontsize", ["fontsize"]],
-                # ["color", ["color"]],
-                # ["style", ["bold", "italic", "underline", "clear"]],
-                # ["para", ["ul", "ol", "paragraph"]],
-                # ["height", ["height"]],
-                # ["help", ["help"]]
-             #]
+                ["style", ["style"]],
+                ["fontsize", ["fontsize"]],
+                ["color", ["color"]],
+                ["style", ["bold", "italic", "underline", "clear"]],
+                ["para", ["ul", "ol", "paragraph"]],
+                ["height", ["height"]],
+                ["table", ["table"]],
+                ["help", ["help"]]
+             ]
 
   # to set code for summernote
   summerNote.code summerNote.val()
@@ -36,5 +35,5 @@ loadSummernote = ->
     summerNote.val summerNote.code()
     true
 
-$(loadSummernote)
-$(document).on "page:load", loadSummernote
+$(document).ready  ->
+  $(loadSummernote)
