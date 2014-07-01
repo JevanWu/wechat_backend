@@ -10,14 +10,16 @@ class OrdinaryRepliesController < ApplicationController
 
   def edit
     @ordinary_reply = OrdinaryReply.find(params[:id])
+    keywords = @ordinary_reply.keywords.map(&:keyword)
+    @ordinary_reply.keyword = keywords.join(", ")
   end
 
   def update
     @ordinary_reply = OrdinaryReply.find(params[:id])
-    if @ordinary_reply.update(permitted_params)
+    if @ordinary_reply.update(permitted_params) && update_keywords
       redirect_to ordinary_reply_path(@ordinary_reply)
     else
-      render 'edit'
+      redirect_to edit_ordinary_reply_path(@ordinary_reply)
     end
   end
 
@@ -45,4 +47,16 @@ class OrdinaryRepliesController < ApplicationController
   def permitted_params
     params.require(:ordinary_reply).permit(:content, :asset_id)
   end
+
+  def update_keywords
+    keywords = params[:ordinary_reply][:keyword].split(", ")
+    if @ordinary_reply.keywords.map(&:keyword) != keywords
+      @ordinary_reply.keywords.destroy_all
+      keywords.each do |keyword|
+        @ordinary_reply.keywords.create(keyword: keyword)
+      end
+    end
+    return true
+  end
+
 end
