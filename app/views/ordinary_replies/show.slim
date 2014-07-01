@@ -3,11 +3,9 @@
   .col-md-9
     .main-content
       p
-        - @ordinary_reply.keywords.each do |keyword|
-          - @collection = ""
-          - @collection = @collection + keyword.keyword
-        | keyword: 
-        = @collection
+        - keywords = @ordinary_reply.keywords.map &:keyword
+        | keywords: 
+        = keywords.join ", "
       p
         | content: 
         = @ordinary_reply.content
