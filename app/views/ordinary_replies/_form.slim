@@ -1,7 +1,7 @@
 = simple_form_for @ordinary_reply do |f|
   = f.input :keyword
 
-  - %w(text image news).each do |type|
+  - %w(text asset).each do |type|
     .btn.btn-success(data-toggle = "modal" data-target = "##{type}-modal")
       = type.capitalize
     | &nbsp
