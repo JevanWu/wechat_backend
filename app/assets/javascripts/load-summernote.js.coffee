@@ -37,3 +37,5 @@ window.loadSummernote = ->
 
 $(document).ready  ->
   $(loadSummernote)
+$(document).on "page:load", ->
+  $(loadSummernote)
