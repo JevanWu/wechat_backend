@@ -13,12 +13,11 @@ class WechatsController < ApplicationController
           assets_count = collection.count
           articles_range = (0... [assets_count, 10].min)
           request.reply.news(articles_range) do |article, i| 
-            article.item title: collection[i].title, description: collection[i].description, pic_url: "http://wechat.hua.li" + collection[i].cover.url, url: collection[i].url
+            article.item title: collection[i].title, description: collection[i].description, pic_url: ENV["DOMAIN"] + collection[i].cover.url, url: collection[i].url
           end
           
         elsif keyword_reply.asset.is_a?ImageAsset 
-          request.reply.text "image reply"
-          #request.reply.image keyword_reply.asset.media_id
+          request.reply.image keyword_reply.asset.media_id
         end
       end
     end
@@ -26,8 +25,7 @@ class WechatsController < ApplicationController
 
   on :text do |request, content|
     default_reply = DefaultReply.first
-    request.reply.text "text reply"
-    #request.reply.text default_reply.content unless default_reply.nil?
+    request.reply.text default_reply.content unless default_reply.nil?
   end
   
   on :event, with: "subscribe" do |request|
