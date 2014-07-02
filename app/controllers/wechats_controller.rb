@@ -2,24 +2,20 @@ class WechatsController < ApplicationController
   wechat_responder
 
   #key words replies
-  OrdinaryReply.all.each do |keyword_reply|
-    keyword_reply.keywords.each do |keyword|
-      on :text, with: keyword.keyword do |request|
-
-        request.reply.text keyword_reply.content if keyword_reply.asset_id.nil?
-
-        if keyword_reply.asset.is_a?NewsAssetCollection
-          collection = keyword_reply.asset.news_assets
-          assets_count = collection.count
-          articles_range = (0... [assets_count, 10].min)
-          request.reply.news(articles_range) do |article, i| 
-            article.item title: collection[i].title, description: collection[i].description, pic_url: ENV["DOMAIN"] + collection[i].cover.url, url: collection[i].url
-          end
-          
-        elsif keyword_reply.asset.is_a?ImageAsset 
-          request.reply.image keyword_reply.asset.media_id
-        end
+  keyword = Keyword.find_by(keyword: params[:xml][:Content]) if params[:xml][:MsgType] == "text"
+  if !keyword.nil?
+    ordinary_reply = keyword.ordinary_reply
+    request.reply.text ordinary_reply.content if ordinary_reply.asset_id.nil?
+    if ordinary_reply.asset.is_a?NewsAssetCollection
+      news_collection = ordinary_reply.asset.news_assets
+      assets_count = news_collection.count
+      articles_range = (0... [assets_count, 10].min)
+      request.reply.news(articles_range) do |article, i| 
+        article.item title: news_collection[i].title, description: news_collection[i].description, pic_url: ENV["DOMAIN_NAME"] + news_collection[i].cover.url, url: news_collection[i].url
       end
+      
+    elsif ordinary_reply.asset.is_a?ImageAsset 
+      request.reply.image ordinary_reply.asset.media_id
     end
   end
 
