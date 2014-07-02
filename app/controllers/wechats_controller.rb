@@ -2,9 +2,13 @@ class WechatsController < ApplicationController
   wechat_responder
 
   #key words replies
-  keyword = Keyword.find_by(keyword: params[:xml][:Content]) if params[:xml][:MsgType] == "text"
-  if !keyword.nil?
-    ordinary_reply = keyword.ordinary_reply
+  def create
+    super
+    @keyword = Keyword.find_by(keyword: params[:xml][:Content]) if params[:xml][:MsgType] == "text"
+  end
+
+  if !@keyword.nil?
+    ordinary_reply = @keyword.ordinary_reply
     request.reply.text ordinary_reply.content if ordinary_reply.asset_id.nil?
     if ordinary_reply.asset.is_a?NewsAssetCollection
       news_collection = ordinary_reply.asset.news_assets
