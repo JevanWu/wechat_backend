@@ -1,6 +1,6 @@
 class WechatsController < ApplicationController
   wechat_responder
-  brefore_action :build_keywords_replies, only: [:create]
+  before_action :build_keywords_replies, only: [:create]
 
   on :text do |request, content|
     default_reply = DefaultReply.first
@@ -18,7 +18,7 @@ class WechatsController < ApplicationController
     #key words replies
     OrdinaryReply.all.each do |ordinary_reply|
       ordinary_reply.keywords.each do |keyword|
-        on :text, with: keyword.keyword do |request|
+        self.class.on :text, with: keyword.keyword do |request|
           request.reply.text ordinary_reply.content if ordinary_reply.asset_id.nil?
           if ordinary_reply.asset.is_a?NewsAssetCollection
             news_collection = ordinary_reply.asset.news_assets
