@@ -3,8 +3,8 @@ class WechatsController < ApplicationController
 
   #key words replies
   def create
-    super
     @keyword = Keyword.find_by(keyword: params[:xml][:Content]) if params[:xml][:MsgType] == "text"
+    super
   end
 
   if !@keyword.nil?
