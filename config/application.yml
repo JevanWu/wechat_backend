@@ -2,3 +2,5 @@ WECHAT_APPID: "wx2264bf970f03a387"
 WECHAT_APP_SECRET: "46210ac8bcb0485ec97ceafa31b143c6"
 WECHAT_TOKEN: "hualirocks2014"
 WECHAT_ACCESS_TOKEN: "/tmp/wechat_access_token"
+
+DOMAIN: "http"

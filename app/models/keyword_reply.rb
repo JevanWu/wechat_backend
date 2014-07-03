@@ -1,0 +1,2 @@
+class KeywordReply < Reply
+end

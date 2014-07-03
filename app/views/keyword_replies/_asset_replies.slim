@@ -1,0 +1,16 @@
+table.table.table-hover
+  thead
+    tr
+      th Keyword
+      th Asset
+      th Control
+  tbody
+    - @keyword_replies.each do |keyword_reply|
+      - next if keyword_reply.asset_id.nil?
+      tr
+        td = keyword_reply.keywords.map(&:keyword).join(", ")
+        td = keyword_reply.asset_id
+        td
+           = link_to "edit", edit_keyword_reply_path(keyword_reply)
+           = " "
+           = link_to "delete", keyword_reply_path(keyword_reply), method: :delete, data: { confirm: "Are you sure?" }

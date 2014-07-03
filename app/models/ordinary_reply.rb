@@ -1,2 +1,0 @@
-class OrdinaryReply < Reply
-end

@@ -3,12 +3,12 @@
   .col-md-9
     .main-content
       p
-        - keywords = @ordinary_reply.keywords.map &:keyword
+        - keywords = @keyword_reply.keywords.map &:keyword
         | keywords: 
         = keywords.join ", "
       p
         | content: 
-        = @ordinary_reply.content
+        = @keyword_reply.content
       p
         | asset: 
-        = @ordinary_reply.asset_id
+        = @keyword_reply.asset_id
