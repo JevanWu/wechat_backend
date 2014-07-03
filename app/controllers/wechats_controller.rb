@@ -8,18 +8,20 @@ class WechatsController < ApplicationController
   end
 
   if !@keyword.nil?
-    ordinary_reply = @keyword.ordinary_reply
-    request.reply.text ordinary_reply.content if ordinary_reply.asset_id.nil?
-    if ordinary_reply.asset.is_a?NewsAssetCollection
-      news_collection = ordinary_reply.asset.news_assets
-      assets_count = news_collection.count
-      articles_range = (0... [assets_count, 10].min)
-      request.reply.news(articles_range) do |article, i| 
-        article.item title: news_collection[i].title, description: news_collection[i].description, pic_url: ENV["DOMAIN_NAME"] + news_collection[i].cover.url, url: news_collection[i].url
+    on :text, with: @keyword.keyword do |request| 
+      ordinary_reply = @keyword.ordinary_reply
+      if ordinary_reply.asset_id.nil?
+        request.reply.text ordinary_reply.content 
+      elsif ordinary_reply.asset.is_a?NewsAssetCollection
+        news_collection = ordinary_reply.asset.news_assets
+        assets_count = news_collection.count
+        articles_range = (0... [assets_count, 10].min)
+        request.reply.news(articles_range) do |article, i| 
+          article.item title: news_collection[i].title, description: news_collection[i].description, pic_url: ENV["DOMAIN_NAME"] + news_collection[i].cover.url, url: news_collection[i].url
+        end
+      elsif ordinary_reply.asset.is_a?ImageAsset 
+        request.reply.image ordinary_reply.asset.media_id
       end
-      
-    elsif ordinary_reply.asset.is_a?ImageAsset 
-      request.reply.image ordinary_reply.asset.media_id
     end
   end
 
