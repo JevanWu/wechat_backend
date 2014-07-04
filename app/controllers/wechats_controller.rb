@@ -16,7 +16,7 @@ class WechatsController < ApplicationController
 
   def build_keywords_replies 
     #key words replies
-    OrdinaryReply.all.each do |keyword_reply|
+    KeywordReply.all.each do |keyword_reply|
       keyword_reply.keywords.each do |keyword|
         self.class.on :text, with: keyword.keyword do |request|
           request.reply.text keyword_reply.content if keyword_reply.asset_id.nil?
