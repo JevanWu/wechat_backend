@@ -28,6 +28,9 @@ class WechatsController < ApplicationController
               article.item title: news_collection[i].title, description: news_collection[i].description, pic_url: ENV["DOMAIN"] + news_collection[i].cover.url, url: news_collection[i].url
             end
           elsif keyword_reply.asset.is_a?ImageAsset 
+            if keyword_reply.asset.updated_at.to_date <= 3.days.from_now
+              WechatUploader.upload_image(keyword_reply.asset)
+            end
             request.reply.image keyword_reply.asset.media_id
           end
         end
