@@ -5,5 +5,5 @@
       .page-header
         h3 Subscribe Reply
       = simple_form_for @subscribe_reply, url: subscribe_reply_path(@subscribe_reply) do |f|
-        = f.input :content, input_html: { class: "summernote" }, label: false
+        = f.input :content, label: false
         = f.button :submit

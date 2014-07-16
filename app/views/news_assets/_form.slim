@@ -1,7 +1,8 @@
+/*TODO: remove summernote*/
 = simple_form_for @news_asset do |f|
   = f.input :title
   = f.input :author
   = f.input :cover
-  = f.input :description, input_html: { class: "summernote" }
+  = f.input :description
   = f.input :url
   = f.button :submit, value: "submit"
