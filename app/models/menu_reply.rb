@@ -1,0 +1,2 @@
+class MenuReply < Reply
+end

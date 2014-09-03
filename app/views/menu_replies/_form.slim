@@ -1,0 +1,10 @@
+= simple_form_for @menu_reply do |f|
+  = f.input :keyword, label: "Key"
+
+  - %w(text asset).each do |type|
+    .btn.btn-success(data-toggle = "modal" data-target = "##{type}-modal")
+      = type.capitalize
+    | &nbsp
+    = render "modal_partial", type: type, f: f
+  p
+  p = f.button :submit, value: "submit"

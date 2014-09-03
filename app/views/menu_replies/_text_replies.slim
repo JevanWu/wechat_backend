@@ -1,0 +1,16 @@
+table.table.table-hover
+  thead
+    tr
+      th Key
+      th Content
+      th Control
+  tbody
+    - @menu_replies.each do |menu_reply|
+      - next if menu_reply.asset_id
+      tr
+        td = menu_reply.keywords.map(&:keyword).join(", ")
+        td = menu_reply.content
+        td
+           = link_to "edit", edit_menu_reply_path(menu_reply)
+           = " "
+           = link_to "delete", menu_reply_path(menu_reply), method: :delete, data: { confirm: "Are you sure?" }

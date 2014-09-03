@@ -9,6 +9,7 @@ HualiWechat::Application.routes.draw do
   resources :subscribe_replies, only: [:index, :update]
   resources :default_replies, only: [:index, :update]
   resources :keyword_replies
+  resources :menu_replies
 
   get 'wechats', to: 'wechats#show'
   post 'wechats', to: 'wechats#create'
