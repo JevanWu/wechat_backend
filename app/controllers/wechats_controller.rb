@@ -14,8 +14,8 @@ class WechatsController < ApplicationController
 
   on :event, with: "click" do |request|
     MenuReply.all.each do |menu_reply|
-      if menu_reply.keywords.first.keyword == request.event_key
-        responce_of menu_reply
+      if menu_reply.keywords.first.keyword == request.message_hash["EventKey"]
+        responce_of menu_reply, request
       end
     end
   end
@@ -27,13 +27,13 @@ class WechatsController < ApplicationController
     KeywordReply.all.each do |keyword_reply|
       keyword_reply.keywords.each do |keyword|
         self.class.on :text, with: keyword.keyword do |request|
-          responce_of keyword_reply
+          responce_of keyword_reply, request
         end
       end
     end
   end
 
-  def responce_of(reply)
+  def self.responce_of(reply, request)
     request.reply.text reply.content if reply.asset_id.nil?
     if reply.asset.is_a?NewsAssetCollection
       news_collection = reply.asset.news_assets
