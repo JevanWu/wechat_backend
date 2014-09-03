@@ -27,7 +27,7 @@ class WechatsController < ApplicationController
     KeywordReply.all.each do |keyword_reply|
       keyword_reply.keywords.each do |keyword|
         self.class.on :text, with: keyword.keyword do |request|
-          responce_of keyword_reply, request
+          self.class.responce_of keyword_reply, request
         end
       end
     end
