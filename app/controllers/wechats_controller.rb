@@ -32,10 +32,11 @@ class WechatsController < ApplicationController
   end
 
   def build_menu_replies
-    MenuReply.all.each do |menu_reply|
-      self.class.on :event, with: "CLICK" do |request|
+    self.class.on :event, with: "CLICK" do |request|
+      MenuReply.all.each do |menu_reply|
         if menu_reply.keywords.first.keyword == request.message_hash["EventKey"]
           responce_of menu_reply, request
+          break
         end
       end
     end
