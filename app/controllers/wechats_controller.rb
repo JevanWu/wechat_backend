@@ -1,6 +1,6 @@
 class WechatsController < ApplicationController
   wechat_responder
-  before_action :build_keyword_replies, only: [:create]
+  before_action :build_replies, only: [:create]
 
   on :text do |request, content|
     default_reply = DefaultReply.first
@@ -12,28 +12,36 @@ class WechatsController < ApplicationController
     request.reply.text subscribe_reply.content unless subscribe_reply.nil?
   end
 
-  MenuReply.all.each do |menu_reply|
-    on :event, with: "CLICK" do |request|
-      if menu_reply.keywords.first.keyword == request.message_hash["EventKey"]
-        responce_of menu_reply, request
-      end
-    end
-  end
 
   private
 
+  def build_replies
+    build_menu_replies
+    build_keyword_replies
+  end
+  
   def build_keyword_replies 
     #key words replies
     KeywordReply.all.each do |keyword_reply|
       keyword_reply.keywords.each do |keyword|
         self.class.on :text, with: keyword.keyword do |request|
-          self.class.responce_of keyword_reply, request
+          responce_of keyword_reply, request
         end
       end
     end
   end
 
-  def self.responce_of(reply, request)
+  def build_menu_replies
+    MenuReply.all.each do |menu_reply|
+      self.class.on :event, with: "CLICK" do |request|
+        if menu_reply.keywords.first.keyword == request.message_hash["EventKey"]
+          responce_of menu_reply, request
+        end
+      end
+    end
+  end
+
+  def responce_of(reply, request)
     request.reply.text reply.content if reply.asset_id.nil?
     if reply.asset.is_a?NewsAssetCollection
       news_collection = reply.asset.news_assets
