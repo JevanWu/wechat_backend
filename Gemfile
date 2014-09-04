@@ -66,7 +66,7 @@ group :development do
   gem 'capistrano-rails'
 end
 
-group :production do
+group :production, :staging do
   #unicorn
   gem 'unicorn'
 end

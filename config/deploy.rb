@@ -1,14 +1,20 @@
 # config valid only for Capistrano 3.1
 lock '3.1.0'
-
-set :application, 'huali_wechat'
+set :scm, :git
 set :repo_url, 'git@git.zenhacks.org:JevanWu/huali_wechat.git'
+set :branch, "origin/master"
+set :application, 'huali_wechat'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
 # Default deploy_to directory is /var/www/my_app
 set :deploy_to, '~/repositories/huali_wechat'
+
+
+set(:current_revision)  { capture("cd #{current_path}; git rev-parse --short HEAD").strip }
+set(:latest_revision)   { capture("cd #{current_path}; git rev-parse --short HEAD").strip }
+set(:previous_revision) { capture("cd #{current_path}; git rev-parse --short HEAD@{1}").strip }
 
 # Default value for :scm is :git
 # set :scm, :git
