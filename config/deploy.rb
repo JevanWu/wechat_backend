@@ -12,9 +12,6 @@ set :application, 'huali_wechat'
 set :deploy_to, '~/repositories/huali_wechat'
 
 
-set(:current_revision)  { capture("cd #{current_path}; git rev-parse --short HEAD").strip }
-set(:latest_revision)   { capture("cd #{current_path}; git rev-parse --short HEAD").strip }
-set(:previous_revision) { capture("cd #{current_path}; git rev-parse --short HEAD@{1}").strip }
 
 # Default value for :scm is :git
 # set :scm, :git
