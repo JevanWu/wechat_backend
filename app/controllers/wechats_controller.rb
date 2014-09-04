@@ -12,8 +12,8 @@ class WechatsController < ApplicationController
     request.reply.text subscribe_reply.content unless subscribe_reply.nil?
   end
 
-  on :event, with: "click" do |request|
-    MenuReply.all.each do |menu_reply|
+  MenuReply.all.each do |menu_reply|
+    on :event, with: "CLICK" do |request|
       if menu_reply.keywords.first.keyword == request.message_hash["EventKey"]
         responce_of menu_reply, request
       end
