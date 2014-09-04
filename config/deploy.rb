@@ -2,7 +2,6 @@
 lock '3.1.0'
 set :scm, :git
 set :repo_url, 'git@git.zenhacks.org:JevanWu/huali_wechat.git'
-set :branch, "origin/master"
 set :application, 'huali_wechat'
 
 # Default branch is :master
