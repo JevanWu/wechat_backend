@@ -1,7 +1,7 @@
 # config valid only for Capistrano 3.1
 lock '3.1.0'
 set :scm, :git
-set :repo_url, 'git@git.zenhacks.org:JevanWu/huali_wechat.git'
+set :repo_url, 'git@bitbucket.org:huali-store/huali_wechat.git'
 set :application, 'huali_wechat'
 
 # Default branch is :master
