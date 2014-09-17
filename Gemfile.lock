@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/ryancheung/capistrano-db-tasks.git
+  revision: 8b2778dc310a3cb174f53b8c85b43366daa97c18
+  branch: postgresql-9.2
+  specs:
+    capistrano-db-tasks (0.3)
+      capistrano (>= 3.0.0)
+
+GIT
   remote: https://github.com/skinnyworm/wechat-rails
   revision: b7acbc05aa5caec68278339c21f15a56406fe427
   specs:
@@ -189,6 +197,7 @@ DEPENDENCIES
   bootstrap-sass
   capistrano
   capistrano-bundler
+  capistrano-db-tasks!
   capistrano-rails
   capistrano-rbenv
   coffee-rails (~> 4.0.0)

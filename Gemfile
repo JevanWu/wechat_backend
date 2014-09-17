@@ -64,6 +64,7 @@ group :development do
   gem 'capistrano-bundler'
   gem 'capistrano-rbenv'
   gem 'capistrano-rails'
+  gem "capistrano-db-tasks", github: 'ryancheung/capistrano-db-tasks', branch: 'postgresql-9.2', require: false
 end
 
 group :production, :staging do
