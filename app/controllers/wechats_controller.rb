@@ -12,7 +12,6 @@ class WechatsController < ApplicationController
     request.reply.text subscribe_reply.content unless subscribe_reply.nil?
   end
 
-
   private
 
   def build_replies
@@ -33,11 +32,9 @@ class WechatsController < ApplicationController
 
   def build_menu_replies
     self.class.on :event, with: "CLICK" do |request|
-      MenuReply.all.each do |menu_reply|
-        if menu_reply.keywords.first.keyword == request.message_hash["EventKey"]
-          responce_of menu_reply, request
-          break
-        end
+      keyword = Keyword.find_by keyword: request.message_hash["EventKey"]
+      if keyword.present?
+        responce_of keyword.reply, request
       end
     end
   end
