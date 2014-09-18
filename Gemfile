@@ -57,6 +57,8 @@ gem "wechat-rails", git:"https://github.com/skinnyworm/wechat-rails"
 
 gem "figaro"
 
+gem "puma"
+
 group :development do
   gem 'pry'
   #capistrano for deploying
