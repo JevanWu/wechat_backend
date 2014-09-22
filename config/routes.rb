@@ -1,5 +1,7 @@
 HualiWechat::Application.routes.draw do
 
+  devise_for :users
+  
   root 'subscribe_replies#index'
   resources :assets
   resources :news_assets

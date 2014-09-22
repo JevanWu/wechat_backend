@@ -57,7 +57,7 @@ gem "wechat-rails", git:"https://github.com/skinnyworm/wechat-rails"
 
 gem "figaro"
 
-gem "puma"
+gem "devise"
 
 group :development do
   gem 'pry'
@@ -71,8 +71,8 @@ group :development do
 end
 
 group :production, :staging do
-  #unicorn
-  gem 'unicorn'
+  #puma
+  gem "puma"
 end
 
 group :doc do
