@@ -24,7 +24,7 @@ production:
   adapter: postgresql
   encoding: unicode
   database: huali_wechat_production
-  pool: 18
+  pool: 20
   username: huali
   password: IShveVzpaUKhWc4bxNAwoQ=
   host: localhost
