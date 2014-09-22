@@ -43,7 +43,8 @@ namespace :deploy do
     on roles(:app), in: :sequence, wait: 5 do
       # Your restart mechanism here, for example:
       # execute :touch, release_path.join('tmp/restart.txt')
-      execute :service, "unicorn_wechat upgrade"
+      #execute :service, "unicorn_wechat upgrade"
+      invoke 'puma:restart'
     end
   end
 
