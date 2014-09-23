@@ -1,16 +1,15 @@
-.container
-  = render "shared/auto_reply_menu"
-  .col-md-9
-    .main-content
-      .page-header
-        h3 
-          | Menu Replies
-          .pull-right
-            = link_to " New ", new_menu_reply_path, class: "btn btn-success"
-      h5
-        | Text Replies
-      = render "text_replies" 
+= render "shared/auto_reply_menu"
+.col-md-9
+  .main-content
+    .page-header
+      h3 
+        | Menu Replies
+        .pull-right
+          = link_to " New ", new_menu_reply_path, class: "btn btn-success"
+    h5
+      | Text Replies
+    = render "text_replies" 
 
-      h5
-        | Asset Replies
-      = render "asset_replies" 
+    h5
+      | Asset Replies
+    = render "asset_replies" 

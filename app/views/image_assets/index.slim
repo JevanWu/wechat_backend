@@ -1,22 +1,21 @@
-.container
-  = render "shared/assets_menu"
-  .col-md-9
-    .page-header
-      h3
-        | Image
-        = link_to " New ", new_image_asset_path, class: "btn btn-success pull-right"
-    .main-content
-      br
-      .row
-        - @image_assets.each do |image_asset|
-          .col-md-4
-            .thumbnail
-              = image_tag image_asset.image.url
-              .captain 
-                p
-                  | Asset id: 
-                  = image_asset.id
-                p
-                  = link_to "edit", edit_image_asset_path(image_asset)
-                  | &nbsp;
-                  = link_to "delete", image_asset_path(image_asset), method: :delete, data: {confirm: "are your sure?"}
+= render "shared/assets_menu"
+.col-md-9
+  .page-header
+    h3
+      | Image
+      = link_to " New ", new_image_asset_path, class: "btn btn-success pull-right"
+  .main-content
+    br
+    .row
+      - @image_assets.each do |image_asset|
+        .col-md-4
+          .thumbnail
+            = image_tag image_asset.image.url
+            .captain 
+              p
+                | Asset id: 
+                = image_asset.id
+              p
+                = link_to "edit", edit_image_asset_path(image_asset)
+                | &nbsp;
+                = link_to "delete", image_asset_path(image_asset), method: :delete, data: {confirm: "are your sure?"}

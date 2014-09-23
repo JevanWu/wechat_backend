@@ -1,11 +1,10 @@
-.container
-  = render "shared/assets_menu"
-  .col-md-9
-    .main-content
-      .row
-        br
-        .col-md-4
-          .thumbnail
-            = image_tag @news_asset.cover.url
-            .captain 
-              p.text-center = @news_asset.cover_file_name
+= render "shared/assets_menu"
+.col-md-9
+  .main-content
+    .row
+      br
+      .col-md-4
+        .thumbnail
+          = image_tag @news_asset.cover.url
+          .captain 
+            p.text-center = @news_asset.cover_file_name

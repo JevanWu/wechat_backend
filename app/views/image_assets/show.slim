@@ -1,11 +1,10 @@
-.container
-  = render "shared/assets_menu"
-  .col-md-9
-    .main-content
-      .row
-        br
-        .col-md-4
-          .thumbnail
-            = image_tag @image_asset.image.url
-            .captain 
-              p.text-center = @image_asset.image_file_name
+= render "shared/assets_menu"
+.col-md-9
+  .main-content
+    .row
+      br
+      .col-md-4
+        .thumbnail
+          = image_tag @image_asset.image.url
+          .captain 
+            p.text-center = @image_asset.image_file_name

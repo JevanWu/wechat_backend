@@ -1,9 +1,8 @@
-.container
-  = render "shared/auto_reply_menu"
-  .col-md-9
-    .main-content
-      .page-header
-        h3 Default Reply
-      = simple_form_for @default_reply, url: default_reply_path(@default_reply) do |f|
-        = f.input :content, label: false
-        = f.button :submit
+= render "shared/auto_reply_menu"
+.col-md-9
+  .main-content
+    .page-header
+      h3 Default Reply
+    = simple_form_for @default_reply, url: default_reply_path(@default_reply) do |f|
+      = f.input :content, label: false
+      = f.button :submit

@@ -1,14 +1,13 @@
-.container
-  = render "shared/auto_reply_menu"
-  .col-md-9
-    .main-content
-      p
-        - keywords = @keyword_reply.keywords.map &:keyword
-        | keywords: 
-        = keywords.join ", "
-      p
-        | content: 
-        = @keyword_reply.content
-      p
-        | asset: 
-        = @keyword_reply.asset_id
+= render "shared/auto_reply_menu"
+.col-md-9
+  .main-content
+    p
+      - keywords = @keyword_reply.keywords.map &:keyword
+      | keywords: 
+      = keywords.join ", "
+    p
+      | content: 
+      = @keyword_reply.content
+    p
+      | asset: 
+      = @keyword_reply.asset_id
